@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { useTheme } from '@/lib/useTheme';
 
 export default function Contact() {
   const { language, content } = useLanguage();
+  const { isDark } = useTheme();
   const [formState, setFormState] = useState({
     name: '',
     message: '',
@@ -20,28 +22,34 @@ export default function Contact() {
     alert(language === 'es' ? '¡Mensaje enviado!' : 'Message sent!');
   };
 
+  const bgColor = isDark ? '#1E293B' : '#F4F5F7';
+  const textColor = isDark ? '#FFFFFF' : '#172B4D';
+  const subtitleColor = isDark ? '#94A3B8' : '#5E6C84';
+  const inputBg = isDark ? '#334155' : '#FFFFFF';
+  const inputBorder = isDark ? '#475569' : '#DFE1E6';
+
   return (
-    <section id="contact" className="py-24" style={{ backgroundColor: '#F4F5F7' }}>
+    <section id="contact" className="py-24" style={{ backgroundColor: bgColor }}>
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4" style={{ color: '#172B4D' }}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4" style={{ color: textColor }}>
           {content.contact.title}
         </h2>
-        <p className="text-center mb-12" style={{ color: '#5E6C84' }}>
+        <p className="text-center mb-12" style={{ color: subtitleColor }}>
           {content.contact.subtitle}
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <div className="mb-8">
-              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>{content.contact.email}</p>
-              <p style={{ color: '#172B4D' }}>anderson.estrategia40@gmail.com</p>
+              <p className="text-sm mb-1" style={{ color: subtitleColor }}>{content.contact.email}</p>
+              <p style={{ color: textColor }}>anderson.estrategia40@gmail.com</p>
             </div>
             <div className="mb-8">
-              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>{content.contact.phone}</p>
-              <p style={{ color: '#172B4D' }}>+57 3105671761</p>
+              <p className="text-sm mb-1" style={{ color: subtitleColor }}>{content.contact.phone}</p>
+              <p style={{ color: textColor }}>+57 3105671761</p>
             </div>
             <div className="mb-8">
-              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>LinkedIn</p>
+              <p className="text-sm mb-1" style={{ color: subtitleColor }}>LinkedIn</p>
               <a 
                 href="https://www.linkedin.com/in/Anderson-Moya" 
                 target="_blank" 
@@ -52,7 +60,7 @@ export default function Contact() {
               </a>
             </div>
             <div>
-              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>GitHub</p>
+              <p className="text-sm mb-1" style={{ color: subtitleColor }}>GitHub</p>
               <a 
                 href="https://github.com/MoyaBigdataDev" 
                 target="_blank" 
@@ -73,7 +81,7 @@ export default function Contact() {
                 onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                 required
                 className="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors"
-                style={{ border: '1px solid #DFE1E6', backgroundColor: '#FFFFFF', color: '#172B4D' }}
+                style={{ border: `1px solid ${inputBorder}`, backgroundColor: inputBg, color: textColor }}
               />
             </div>
             <div>
@@ -84,7 +92,7 @@ export default function Contact() {
                 required
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors resize-none"
-                style={{ border: '1px solid #DFE1E6', backgroundColor: '#FFFFFF', color: '#172B4D' }}
+                style={{ border: `1px solid ${inputBorder}`, backgroundColor: inputBg, color: textColor }}
               />
             </div>
             <button

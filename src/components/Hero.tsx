@@ -1,23 +1,28 @@
 "use client";
 
 import { useLanguage } from '@/lib/LanguageContext';
+import { useTheme } from '@/lib/useTheme';
 
 export default function Hero() {
   const { content } = useLanguage();
+  const { isDark } = useTheme();
+
+  const textColor = isDark ? '#FFFFFF' : '#172B4D';
+  const subtitleColor = isDark ? '#94A3B8' : '#5E6C84';
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center pt-20" style={{ backgroundColor: '#FFFFFF' }}>
+    <section id="about" className="min-h-screen flex items-center justify-center pt-20" style={{ backgroundColor: isDark ? '#0F172A' : '#FFFFFF' }}>
       <div className="max-w-4xl mx-auto px-6 text-center">
         <p className="text-sm mb-4 tracking-widest uppercase" style={{ color: '#0052CC' }}>
           {content.hero.greeting}
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#172B4D' }}>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: textColor }}>
           Anderson Moya
         </h1>
-        <h2 className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style={{ color: '#172B4D' }}>
+        <h2 className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style={{ color: textColor }}>
           {content.hero.title}
         </h2>
-        <p className="text-lg mb-10 max-w-xl mx-auto" style={{ color: '#5E6C84' }}>
+        <p className="text-lg mb-10 max-w-xl mx-auto" style={{ color: subtitleColor }}>
           {content.hero.subtitle}
         </p>
         <a
@@ -27,7 +32,7 @@ export default function Hero() {
         >
           {content.hero.cta}
         </a>
-        <p className="mt-16 text-sm" style={{ color: '#5E6C84' }}>
+        <p className="mt-16 text-sm" style={{ color: subtitleColor }}>
           {content.hero.scroll}
         </p>
         <div className="mt-4 animate-bounce">

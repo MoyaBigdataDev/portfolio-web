@@ -1,21 +1,30 @@
 "use client";
 
 import { useLanguage } from '@/lib/LanguageContext';
+import { useTheme } from '@/lib/useTheme';
 
 export default function Certifications() {
   const { content } = useLanguage();
+  const { isDark } = useTheme();
+
+  const bgColor = isDark ? '#1E293B' : '#F4F5F7';
+  const cardBg = isDark ? '#334155' : '#FFFFFF';
+  const cardBorder = isDark ? '#475569' : '#E5E7EB';
+  const textColor = isDark ? '#FFFFFF' : '#172B4D';
+  const subtitleColor = isDark ? '#94A3B8' : '#5E6C84';
 
   return (
-    <section id="certifications" className="py-24" style={{ backgroundColor: '#F4F5F7' }}>
+    <section id="certifications" className="py-24" style={{ backgroundColor: bgColor }}>
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16" style={{ color: '#172B4D' }}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16" style={{ color: textColor }}>
           {content.certifications.title}
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {content.certifications.items.map((cert, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-shadow flex items-center gap-4"
+              className="p-6 rounded-xl border hover:shadow-md transition-shadow flex items-center gap-4"
+              style={{ backgroundColor: cardBg, borderColor: cardBorder }}
             >
               <div 
                 className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
@@ -26,10 +35,10 @@ export default function Certifications() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold" style={{ color: '#172B4D' }}>
+                <h3 className="font-semibold" style={{ color: textColor }}>
                   {cert.name}
                 </h3>
-                <p className="text-sm" style={{ color: '#5E6C84' }}>
+                <p className="text-sm" style={{ color: subtitleColor }}>
                   {cert.issuer} • {cert.year}
                 </p>
               </div>
