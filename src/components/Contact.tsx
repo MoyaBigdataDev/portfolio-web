@@ -34,15 +34,33 @@ export default function Contact() {
           <div>
             <div className="mb-8">
               <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>{content.contact.email}</p>
-              <p style={{ color: '#172B4D' }}>anderson.moya@email.com</p>
+              <p style={{ color: '#172B4D' }}>anderson.estrategia40@gmail.com</p>
             </div>
             <div className="mb-8">
               <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>{content.contact.phone}</p>
-              <p style={{ color: '#172B4D' }}>+1 (555) 123-4567</p>
+              <p style={{ color: '#172B4D' }}>+57 3105671761</p>
+            </div>
+            <div className="mb-8">
+              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>LinkedIn</p>
+              <a 
+                href="https://www.linkedin.com/in/Anderson-Moya" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ color: '#0052CC' }}
+              >
+                linkedin.com/in/Anderson-Moya
+              </a>
             </div>
             <div>
-              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>{content.contact.location}</p>
-              <p style={{ color: '#172B4D' }}>Bogotá, Colombia</p>
+              <p className="text-sm mb-1" style={{ color: '#5E6C84' }}>GitHub</p>
+              <a 
+                href="https://github.com/MoyaBigdataDev" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ color: '#0052CC' }}
+              >
+                github.com/MoyaBigdataDev
+              </a>
             </div>
           </div>
 

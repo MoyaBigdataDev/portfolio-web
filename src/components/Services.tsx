@@ -15,8 +15,7 @@ export default function Services() {
           {content.services.items.map((service, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl hover:shadow-lg transition-shadow"
-              style={{ backgroundColor: '#FFFFFF' }}
+              className="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow"
             >
               <div className="w-12 h-12 rounded-lg mb-6 flex items-center justify-center" style={{ backgroundColor: '#0052CC' }}>
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#FFFFFF' }}>

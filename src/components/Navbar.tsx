@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { Language } from '@/lib/content';
 
 export default function Navbar() {
   const { language, setLanguage, content } = useLanguage();
@@ -22,6 +21,8 @@ export default function Navbar() {
     { key: 'services', href: '#services' },
     { key: 'projects', href: '#projects' },
     { key: 'experience', href: '#experience' },
+    { key: 'education', href: '#education' },
+    { key: 'certifications', href: '#certifications' },
     { key: 'testimonials', href: '#testimonials' },
     { key: 'contact', href: '#contact' },
   ];
@@ -33,9 +34,8 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#FFFFFF]/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
-      style={{ backgroundColor: scrolled ? '#FFFFFF' : 'transparent' }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
