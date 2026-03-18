@@ -1,7 +1,15 @@
 "use client";
 
+import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useTheme } from '@/lib/useTheme';
+
+interface Certification {
+  name: string;
+  issuer: string;
+  year: string;
+  image?: string;
+}
 
 export default function Certifications() {
   const { content } = useLanguage();
@@ -20,20 +28,31 @@ export default function Certifications() {
           {content.certifications.title}
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
-          {content.certifications.items.map((cert, index) => (
+          {(content.certifications.items as Certification[]).map((cert, index) => (
             <div
               key={index}
               className="p-6 rounded-xl border hover:shadow-md transition-shadow flex items-center gap-4"
               style={{ backgroundColor: cardBg, borderColor: cardBorder }}
             >
-              <div 
-                className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: '#0052CC' }}
-              >
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-              </div>
+              {cert.image ? (
+                <div className="w-16 h-16 relative flex-shrink-0">
+                  <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ) : (
+                <div 
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: '#0052CC' }}
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+              )}
               <div>
                 <h3 className="font-semibold" style={{ color: textColor }}>
                   {cert.name}

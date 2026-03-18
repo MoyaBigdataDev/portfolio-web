@@ -140,6 +140,7 @@ export const content = {
           name: 'SCRUM Practitioner (CM-SPC)',
           issuer: 'Scrum Alliance',
           year: '2025',
+          image: '/Scrum.png',
         },
         {
           name: 'AWS Fundamentals Specialization',
@@ -324,6 +325,7 @@ export const content = {
           name: 'SCRUM Practitioner (CM-SPC)',
           issuer: 'Scrum Alliance',
           year: '2025',
+          image: '/Scrum.png',
         },
         {
           name: 'AWS Fundamentals Specialization',
