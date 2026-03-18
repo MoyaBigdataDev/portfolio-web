@@ -60,7 +60,7 @@ export const content = {
           title: 'Extracción de Datos AS400',
           description: 'Desarrollo de proyectos de extracción de datos de tiempos de procesamiento en plataformas IBM i (AS400). Automatización de reportes y generación de información estratégica.',
           tags: ['AS400', 'IBM i', 'SQL', 'Python'],
-          image: '/sql.jpg',
+          image: '/ibm.jpg',
           link: 'https://github.com/MoyaBigdataDev/especializacion-bigdata',
         },
         {
@@ -243,7 +243,7 @@ export const content = {
           title: 'AS400 Data Extraction',
           description: 'Development of data extraction projects for processing times on IBM i (AS400) platforms. Report automation and strategic information generation.',
           tags: ['AS400', 'IBM i', 'SQL', 'Python'],
-          image: '/sql.jpg',
+          image: '/ibm.jpg',
           link: 'https://github.com/MoyaBigdataDev/especializacion-bigdata',
         },
         {
