@@ -26,10 +26,10 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        'service_portfolio',
-        'template_portfolio',
+        'service_4ep2m4w',
+        'template_gkq7v0r',
         form.current,
-        'YOUR_PUBLIC_KEY'
+        'Gr1-dfZ3J9IU43AH6'
       );
       setStatus('success');
       setFormState({ name: '', email: '', message: '' });
