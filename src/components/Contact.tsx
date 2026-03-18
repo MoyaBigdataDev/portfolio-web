@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useTheme } from '@/lib/useTheme';
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
   const { language, content } = useLanguage();
   const { isDark } = useTheme();
   const [formState, setFormState] = useState({
@@ -17,22 +19,20 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.current) return;
+
     setSending(true);
     setStatus('idle');
 
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formState),
-      });
-
-      if (res.ok) {
-        setStatus('success');
-        setFormState({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
+      await emailjs.sendForm(
+        'service_portfolio',
+        'template_portfolio',
+        form.current,
+        'YOUR_PUBLIC_KEY'
+      );
+      setStatus('success');
+      setFormState({ name: '', email: '', message: '' });
     } catch {
       setStatus('error');
     } finally {
@@ -90,11 +90,11 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
                 type="text"
-                name="name"
+                name="from_name"
                 placeholder={content.contact.form.name}
                 value={formState.name}
                 onChange={(e) => setFormState({ ...formState, name: e.target.value })}
@@ -106,7 +106,7 @@ export default function Contact() {
             <div>
               <input
                 type="email"
-                name="email"
+                name="from_email"
                 placeholder={content.contact.email}
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
