@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useTheme } from '@/lib/useTheme';
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
   const { language, content } = useLanguage();
   const { isDark } = useTheme();
   const [formState, setFormState] = useState({
@@ -12,14 +14,29 @@ export default function Contact() {
     message: '',
   });
   const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.current) return;
+
     setSending(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSending(false);
-    setFormState({ name: '', message: '' });
-    alert(language === 'es' ? '¡Mensaje enviado!' : 'Message sent!');
+    setStatus('idle');
+
+    try {
+      await emailjs.sendForm(
+        'service_portfolio',
+        'template_portfolio',
+        form.current,
+        'YOUR_PUBLIC_KEY'
+      );
+      setStatus('success');
+      setFormState({ name: '', message: '' });
+    } catch (error) {
+      setStatus('error');
+    } finally {
+      setSending(false);
+    }
   };
 
   const bgColor = isDark ? '#1E293B' : '#F4F5F7';
@@ -72,10 +89,11 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
                 type="text"
+                name="from_name"
                 placeholder={content.contact.form.name}
                 value={formState.name}
                 onChange={(e) => setFormState({ ...formState, name: e.target.value })}
@@ -86,6 +104,7 @@ export default function Contact() {
             </div>
             <div>
               <textarea
+                name="message"
                 placeholder={content.contact.form.message}
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
@@ -103,6 +122,16 @@ export default function Contact() {
             >
               {sending ? content.contact.form.sending : content.contact.form.send}
             </button>
+            {status === 'success' && (
+              <p className="text-green-500 text-center">
+                {language === 'es' ? '¡Mensaje enviado correctamente!' : 'Message sent successfully!'}
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="text-red-500 text-center">
+                {language === 'es' ? 'Error al enviar. Intenta de nuevo.' : 'Error sending. Please try again.'}
+              </p>
+            )}
           </form>
         </div>
       </div>
