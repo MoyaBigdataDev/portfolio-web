@@ -1,0 +1,68 @@
+{
+  "projectName": "Anderson Moya Portfolio",
+  "projectType": "website",
+  "description": "Personal portfolio website for Big Data & Digital Transformation Consultant",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "title": "Page loads successfully",
+      "description": "The homepage should load without any errors",
+      "acceptanceCriteria": [
+        "Page renders without crash",
+        "No console errors"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "title": "All sections render",
+      "description": "All portfolio sections should be visible",
+      "acceptanceCriteria": [
+        "Hero section visible",
+        "Services section visible",
+        "Projects section visible",
+        "Experience section visible",
+        "Education section visible",
+        "Certifications section visible",
+        "Testimonials section visible",
+        "Contact section visible",
+        "Footer visible"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "title": "Theme toggle works",
+      "description": "Dark/Light mode toggle should work",
+      "acceptanceCriteria": [
+        "Clicking toggle changes theme",
+        "Colors update correctly"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "title": "Language switcher works",
+      "description": "Spanish/English toggle should work",
+      "acceptanceCriteria": [
+        "Clicking toggle changes language",
+        "All text updates"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "title": "Project images display",
+      "description": "Project images should load correctly",
+      "acceptanceCriteria": [
+        "Images are visible",
+        "No broken images"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "title": "Contact form works",
+      "description": "Contact form should open WhatsApp",
+      "acceptanceCriteria": [
+        "Form validates required fields",
+        "WhatsApp opens with message"
+      ]
+    }
+  ]
+}
