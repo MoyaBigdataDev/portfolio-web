@@ -1,16 +1,15 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useTheme } from '@/lib/useTheme';
 
 export default function Contact() {
-  const form = useRef<HTMLFormElement>(null);
   const { language, content } = useLanguage();
   const { isDark } = useTheme();
   const [formState, setFormState] = useState({
     name: '',
+    email: '',
     message: '',
   });
   const [sending, setSending] = useState(false);
@@ -18,21 +17,23 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.current) return;
-
     setSending(true);
     setStatus('idle');
 
     try {
-      await emailjs.sendForm(
-        'service_portfolio',
-        'template_portfolio',
-        form.current,
-        'YOUR_PUBLIC_KEY'
-      );
-      setStatus('success');
-      setFormState({ name: '', message: '' });
-    } catch (error) {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
       setStatus('error');
     } finally {
       setSending(false);
@@ -89,15 +90,26 @@ export default function Contact() {
             </div>
           </div>
 
-          <form ref={form} onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
                 type="text"
-                name="from_name"
+                name="name"
                 placeholder={content.contact.form.name}
                 value={formState.name}
                 onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                 required
+                className="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors"
+                style={{ border: `1px solid ${inputBorder}`, backgroundColor: inputBg, color: textColor }}
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder={content.contact.email}
+                value={formState.email}
+                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg border focus:outline-none transition-colors"
                 style={{ border: `1px solid ${inputBorder}`, backgroundColor: inputBg, color: textColor }}
               />
