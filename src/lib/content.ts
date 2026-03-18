@@ -143,9 +143,10 @@ export const content = {
           image: '/Scrum.png',
         },
         {
-          name: 'AWS Fundamentals Specialization',
+          name: 'AWS Cloud Practitioner Essentials',
           issuer: 'Coursera',
           year: '2026',
+          image: '/aws.png',
         },
       ],
     },
@@ -328,9 +329,10 @@ export const content = {
           image: '/Scrum.png',
         },
         {
-          name: 'AWS Fundamentals Specialization',
+          name: 'AWS Cloud Practitioner Essentials',
           issuer: 'Coursera',
           year: '2026',
+          image: '/aws.png',
         },
       ],
     },
