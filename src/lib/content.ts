@@ -81,6 +81,7 @@ export const content = {
           title: 'Especialización Big Data - Python Data Science',
           description: 'Proyectos de la especialización en Big Data: talleres de Python, análisis de datos, extracción y transformación de datos.',
           tags: ['Python', 'Jupyter', 'Pandas', 'SQL'],
+          image: '/sql.jpg',
           link: 'https://github.com/MoyaBigdataDev/especializacion-bigdata',
         },
         {
@@ -264,6 +265,7 @@ export const content = {
           title: 'Big Data Specialization - Python Data Science',
           description: 'Projects from the Big Data specialization: Python workshops, data analysis, data extraction and transformation.',
           tags: ['Python', 'Jupyter', 'Pandas', 'SQL'],
+          image: '/sql.jpg',
           link: 'https://github.com/MoyaBigdataDev/especializacion-bigdata',
         },
         {
