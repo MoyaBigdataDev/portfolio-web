@@ -14,7 +14,7 @@ export const content = {
     },
     hero: {
       greeting: 'Hola, soy',
-      title: 'Arquitecto de Soluciones Big Data',
+      title: 'Especialista de Soluciones Big Data',
       subtitle: 'Ingeniero de Sistemas con experiencia en análisis de datos, visualización de información y monitoreo de plataformas IBM i (AS400). Analista de Producción, especializado en dashboards, automatización de reportes y generación de información estratégica para la toma de decisiones. Especialista en Big Data de la universidad UNIMINUTO y cuento con certificación Scrum Practitioner (CM-SPC), además conocimientos básicos de nube con AWS.',
       cta: 'Contáctame',
       scroll: 'Desliza para explorar',
@@ -200,7 +200,7 @@ export const content = {
     },
     hero: {
       greeting: 'Hi, I\'m',
-      title: 'Big Data Solutions Architect',
+      title: 'Big Data Solutions Specialist',
       subtitle: 'Systems Engineer with experience in data analysis, information visualization, and IBM i (AS400) platform monitoring. Production Analyst, specialized in dashboards, report automation, and strategic information generation for decision-making. Big Data Specialist from UNIMINUTO University, certified as Scrum Practitioner (CM-SPC), with basic cloud knowledge in AWS.',
       cta: 'Contact Me',
       scroll: 'Scroll to explore',

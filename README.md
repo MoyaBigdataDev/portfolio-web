@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anderson Moya Portfolio
 
-## Getting Started
+Portfolio profesional para Big Data & Digital Transformation Consultant.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev      # Development server
+npm run build    # Production build
+npm run lint     # Run linter
+npm run test     # Run Playwright tests
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Desplegado en Vercel: https://anderson-moya-portfolio.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## MCP Configuration
 
-## Learn More
+Este proyecto usa los siguientes MCP servers configurados globalmente:
 
-To learn more about Next.js, take a look at the following resources:
+### Archivos de Configuración
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Config global: `~/.config/opencode/opencode.json`
+- Variables de entorno: `~/.config/opencode/mcp.env.example`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### MCPs Disponibles
 
-## Deploy on Vercel
+1. **filesystem** - Acceso a sistema de archivos para todo el workspace
+   - Tipo: local
+   - Estado: enabled
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Configurar Variables de Entorno
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Crea `~/.config/opencode/mcp.env` con:
+
+```bash
+TESTSPRITE_API_KEY=tu-api-key
+DATABASE_URL=postgresql://localhost:5432/mydb
+```
+
+## Testing
+
+```bash
+npx playwright test
+```
+
+## Security
+
+- No secrets en código
+- Variables de entorno para configuración sensible
+- .env en .gitignore
+- Auditorías de seguridad periódicas recomendadas
