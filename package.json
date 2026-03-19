@@ -9,17 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@modelcontextprotocol/server-filesystem": "^2026.1.14",
-    "@modelcontextprotocol/server-postgres": "^0.6.2",
-    "mcp-sqlite": "^1.0.8",
     "next": "16.1.7",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@modelcontextprotocol/server-filesystem": "^2026.1.14",
+    "@modelcontextprotocol/server-postgres": "^0.6.2",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@testsprite/testsprite-mcp": "^0.0.31",
+    "mcp-sqlite": "^1.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
-import { useTheme } from '@/lib/useTheme';
+import { useTheme } from '@/lib/ThemeContext';
 
 interface Certification {
   name: string;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { useTheme } from '@/lib/useTheme';
+import { useTheme } from '@/lib/ThemeContext';
 
 export default function Navbar() {
   const { language, setLanguage, content } = useLanguage();
@@ -64,6 +64,7 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full transition-colors hover:opacity-80"
+              aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               style={{ 
                 backgroundColor: isDark ? '#172B4D' : '#F4F5F7',
                 color: textColor,
@@ -85,6 +86,7 @@ export default function Navbar() {
             <button
               onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
               className="text-sm font-medium transition-colors px-3 py-1 rounded-full"
+              aria-label={language === 'es' ? 'Cambiar a inglés' : 'Cambiar a español'}
               style={{ color: textColor, border: `1px solid ${borderColor}` }}
             >
               {language === 'es' ? 'EN' : 'ES'}
@@ -93,6 +95,8 @@ export default function Navbar() {
             <button
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={mobileMenuOpen}
               style={{ color: textColor }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

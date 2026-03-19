@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { useTheme } from '@/lib/useTheme';
+import { useTheme } from '@/lib/ThemeContext';
 
 export default function Contact() {
   const { language, content } = useLanguage();

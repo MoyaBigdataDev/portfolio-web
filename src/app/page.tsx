@@ -10,7 +10,7 @@ import Certifications from "@/components/Certifications";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { useTheme } from "@/lib/useTheme";
+import { useTheme } from "@/lib/ThemeContext";
 
 export default function Home() {
   const { isDark } = useTheme();

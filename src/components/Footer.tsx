@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from '@/lib/LanguageContext';
-import { useTheme } from '@/lib/useTheme';
+import { useTheme } from '@/lib/ThemeContext';
 
 export default function Footer() {
   const { content } = useLanguage();
